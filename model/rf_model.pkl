@@ -1,0 +1,11 @@
+# save_model.py (not included in main repo)
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+import pandas as pd
+
+df = pd.read_csv("network_data.csv")  # Your labeled dataset
+X = df[["proto"]]
+y = df["label"]
+model = RandomForestClassifier()
+model.fit(X, y)
+joblib.dump(model, "model/rf_model.pkl")
